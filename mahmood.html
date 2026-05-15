@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahmood Rashid — Staferm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #f0f4f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(13,59,110,0.10), 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .card-header {
+      background: #0D3B6E;
+      padding: 2rem 1.75rem 1.6rem;
+      position: relative;
+    }
+
+    .card-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      margin: 0 0 5px;
+      letter-spacing: 0.3px;
+    }
+
+    .card-title {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      margin: 0;
+      font-weight: 300;
+    }
+
+    .card-company {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.8);
+      margin: 3px 0 0;
+      font-weight: 400;
+    }
+
+    .card-body {
+      padding: 1.5rem 1.75rem;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 0.5px solid #e5e9ee;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.15s;
+    }
+
+    .info-row:hover { opacity: 0.75; }
+    .info-row:last-of-type { border-bottom: none; }
+
+    .info-row i {
+      font-size: 17px;
+      color: #185FA5;
+      width: 20px;
+      flex-shrink: 0;
+    }
+
+    .info-row span {
+      font-size: 13.5px;
+      color: #1a1a1a;
+      font-weight: 400;
+    }
+
+    .info-row.linked span {
+      color: #185FA5;
+    }
+
+    .icon-logo {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .divider {
+      height: 0.5px;
+      background: #e5e9ee;
+      margin: 0 1.75rem;
+    }
+
+    .card-actions {
+      padding: 1.25rem 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 11px 0;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.3px;
+      transition: opacity 0.15s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:active { opacity: 0.85; transform: scale(0.98); }
+
+    .btn-primary {
+      background: #0D3B6E;
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #0e437e; }
+
+    .btn-secondary {
+      background: #f5f7fa;
+      color: #1a1a1a;
+      border: 0.5px solid #d0d7e2;
+    }
+
+    .btn-secondary:hover { background: #edf0f5; }
+
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #0D3B6E;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      z-index: 100;
+      box-shadow: 0 4px 16px rgba(13,59,110,0.2);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="card-header">
+      <p class="card-name">Mahmood Rashid</p>
+      <p class="card-title">President</p>
+      <p class="card-company">Staferm</p>
+    </div>
+
+    <div class="card-body">
+      <a class="info-row" href="tel:18336478376">
+        <i class="ti ti-phone" aria-hidden="true"></i>
+        <span>1 833 GOSTFRM</span>
+      </a>
+      <a class="info-row linked" href="https://wa.me/16048126781" target="_blank" rel="noopener">
+        <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.099-.47-.148-.67.15-.23.297-.921.967-1.129 1.167-.206.199-.412.223-.71.054-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371 0-.57 0-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.869 1.171l-.546-.274L6.598 2.268l.645 1.891a9.882 9.882 0 00-1.746 5.153c0 5.487 4.47 9.957 9.957 9.957 2.663 0 5.16-1.034 7.052-2.91 1.893-1.875 2.935-4.372 2.935-7.046 0-5.487-4.469-9.956-9.957-9.956" fill="#25D366"/>
+        </svg>
+        <span>1 604.812.6781</span>
+      </a>
+      <a class="info-row" href="mailto:mahmood.rashid@staferm.com">
+        <i class="ti ti-mail" aria-hidden="true"></i>
+        <span>mahmood.rashid@staferm.com</span>
+      </a>
+      <a class="info-row linked" href="https://www.linkedin.com/company/staferm/" target="_blank" rel="noopener">
+        <svg class="icon-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="24" height="24" rx="4" fill="#0A66C2"/>
+          <path d="M7.5 10H5.5V18H7.5V10Z" fill="white"/>
+          <circle cx="6.5" cy="7.5" r="1.25" fill="white"/>
+          <path d="M13 13.5C13 12.4 13.7 11.5 14.8 11.5C15.9 11.5 16.5 12.3 16.5 13.5V18H18.5V13.2C18.5 11.2 17.3 10 15.5 10C14.3 10 13.5 10.6 13 11.3V10H11V18H13V13.5Z" fill="white"/>
+        </svg>
+        <span>Staferm on LinkedIn</span>
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="card-actions">
+      <button class="btn btn-primary" onclick="saveContact()">
+        <i class="ti ti-user-plus" aria-hidden="true"></i>
+        Save contact
+      </button>
+      <button class="btn btn-secondary" onclick="shareContact()">
+        <i class="ti ti-share" aria-hidden="true"></i>
+        Share your contact with me
+      </button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    function saveContact() {
+      const vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:Mahmood Rashid',
+        'N:Rashid;Mahmood;;;',
+        'ORG:Staferm',
+        'TITLE:President',
+        'TEL;TYPE=CELL:+16048126781',
+        'EMAIL:mahmood.rashid@staferm.com',
+        'URL:https://www.linkedin.com/company/staferm/',
+        'END:VCARD'
+      ].join('\n');
+
+      const blob = new Blob([vcard], { type: 'text/vcard' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Mahmood_Rashid.vcf';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Contact saved!');
+    }
+
+    function shareContact() {
+      const smsBody = encodeURIComponent("Hi Mahmood! Here's my contact info:");
+      const phone = '16048126781';
+      const isMobile = /iPhone|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        window.location.href = `sms:${phone}?body=${smsBody}`;
+      } else {
+        showToast('Open this page on your phone to share via SMS');
+      }
+    }
+  </script>
+
+</body>
+</html>
